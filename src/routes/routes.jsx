@@ -6,6 +6,7 @@ import { lazy } from "react";
 // import useInactividadLogout from "../hooks/useInactividadLogout";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import ThemeBackdrop from "../context/ThemeBackdrop";
 
 /* -------------------- Públicos -------------------- */
 const Landing = lazy(() => import("../pages/landing"));
@@ -14,6 +15,8 @@ const Servicios = lazy(() => import("../pages/servicios"));
 const Ubicacion = lazy(() => import("../pages/ubicacion"));
 const Contacto = lazy(() => import("../pages/contacto"));
 const Galeria = lazy(() => import("../pages/galeria"));
+const Sponsors = lazy(() => import("../pages/sponsors"));
+
 
 function Home() {
   return (
@@ -30,6 +33,10 @@ function Home() {
         <Servicios />
       </section>
 
+      <section id="sponsors" className="scroll-mt-20">
+        <Sponsors />
+      </section>
+      
       <section id="ubicacion" className="scroll-mt-20">
         <Ubicacion />
       </section>
@@ -37,24 +44,23 @@ function Home() {
       <section id="contacto" className="scroll-mt-20">
         <Contacto />
       </section>
+
+    
     </>
   );
 }
 
 function PublicShell() {
   return (
-    <div className="scroll-smooth w-full min-h-screen bg-[#0b0f14] text-white font-sans">
-      {/* Fondo corporativo serio: oscuro + leve gradiente */}
-      <div className="min-h-screen bg-gradient-to-b from-[#0b0f14] via-[#0c131c] to-[#0b0f14]">
-        <Navbar />
-        <main className="pt-16">{/* navbar fixed-friendly */}
-          <Home />
-        </main>
-        <Footer />
-      </div>
+    <div className="scroll-smooth w-full min-h-screen text-white">
+      <ThemeBackdrop />
+      <Navbar />
+      <main><Home /></main>
+      <Footer />
     </div>
   );
 }
+
 
 // Mantengo el “molde RAFC” para cuando habilites admin.
 // De momento lo dejo funcionando como passthrough para no romper build.

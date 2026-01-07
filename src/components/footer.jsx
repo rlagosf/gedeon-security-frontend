@@ -1,58 +1,121 @@
 // src/components/footer.jsx
+import Reveal from "./Reveal";
+
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#0b0f14]">
-      <div className="max-w-7xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-3">
-        
+    <footer className="relative bg-[#070b12] overflow-hidden">
+      {/* Fade superior (para empalmar con el componente anterior) */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-transparent to-[#070b12]" />
+
+      <div className="max-w-7xl mx-auto px-6 py-14 grid gap-12 md:grid-cols-3 items-start">
         {/* Marca */}
-        <div>
-          <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-white text-black grid place-items-center font-semibold">
-              G
+        <Reveal>
+          <div>
+            <div className="flex items-start gap-4">
+              <img
+                src="/images/logo-gedeon-amarillo.png"
+                alt="Gedeon Security"
+                className="h-16 w-auto object-contain"
+                draggable="false"
+              />
+
+              <p className="text-white/65 text-sm leading-relaxed max-w-sm mt-1">
+                Empresa de seguridad orientada a la prevención, control operativo y
+                respuesta coordinada. Servicios profesionales para entornos exigentes.
+              </p>
             </div>
-            <span className="font-semibold tracking-wide">
-              GEDEON <span className="text-white/60">SECURITY</span>
-            </span>
           </div>
+        </Reveal>
 
-          <p className="mt-4 text-white/60 text-sm leading-relaxed max-w-sm">
-            Empresa de seguridad orientada a la prevención, control operativo y
-            respuesta coordinada. Servicios profesionales para entornos exigentes.
-          </p>
-        </div>
+        {/* Navegación */}
+        <Reveal delay={0.08}>
+          <div>
+            <p className="text-sm uppercase tracking-widest text-white/50">
+              Navegación
+            </p>
 
-        {/* Enlaces */}
-        <div>
-          <p className="text-sm uppercase tracking-widest text-white/50">
-            Navegación
-          </p>
-
-          <ul className="mt-4 space-y-2 text-sm">
-            <li><a href="#inicio" className="text-white/70 hover:text-white">Inicio</a></li>
-            <li><a href="#nosotros" className="text-white/70 hover:text-white">Nosotros</a></li>
-            <li><a href="#servicios" className="text-white/70 hover:text-white">Servicios</a></li>
-            <li><a href="#ubicacion" className="text-white/70 hover:text-white">Ubicación</a></li>
-            <li><a href="#contacto" className="text-white/70 hover:text-white">Contacto</a></li>
-          </ul>
-        </div>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li>
+                <a href="#inicio" className="text-white/70 hover:text-white transition">
+                  Inicio
+                </a>
+              </li>
+              <li>
+                <a href="#nosotros" className="text-white/70 hover:text-white transition">
+                  Nosotros
+                </a>
+              </li>
+              <li>
+                <a href="#servicios" className="text-white/70 hover:text-white transition">
+                  Servicios
+                </a>
+              </li>
+              <li>
+                <a href="#ubicacion" className="text-white/70 hover:text-white transition">
+                  Ubicación
+                </a>
+              </li>
+              <li>
+                <a href="#contacto" className="text-white/70 hover:text-white transition">
+                  Contacto
+                </a>
+              </li>
+            </ul>
+          </div>
+        </Reveal>
 
         {/* Contacto */}
-        <div>
-          <p className="text-sm uppercase tracking-widest text-white/50">
-            Contacto
-          </p>
+        <Reveal delay={0.14}>
+          <div>
+            <p className="text-sm uppercase tracking-widest text-white/50">
+              Contacto
+            </p>
 
-          <div className="mt-4 space-y-2 text-sm text-white/70">
-            <p>📍 Av. Principal 1234, Santiago</p>
-            <p>📞 +56 9 1234 5678</p>
-            <p>✉️ contacto@gedeonsecurity.cl</p>
+            <div className="mt-4 space-y-2 text-sm text-white/70">
+              <p>
+                📍{" "}
+                <a
+                  href="https://www.google.com/maps/dir//Lord+Cochrane+30+8330166+Santiago+Regi%C3%B3n+Metropolitana/@-33.4455629,-70.6550952,17z"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-white transition"
+                >
+                  Lord Cochrane N° 30, Oficina 606, Santiago Centro, Chile
+                </a>
+              </p>
+
+              <p>
+                📞{" "}
+                <a
+                  href="https://wa.me/56941375587"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-white transition"
+                >
+                  +56 9 4137 5587
+                </a>
+              </p>
+
+              <p>
+                ✉️{" "}
+                <a
+                  href="mailto:contacto@gedeonsecurity.cl"
+                  className="hover:text-white transition"
+                >
+                  contacto@gedeonsecurity.cl
+                </a>
+              </p>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </div>
 
-      <div className="border-t border-white/10 py-4 text-center text-xs text-white/40">
-        © {new Date().getFullYear()} Gedeon Security. Todos los derechos reservados.
-      </div>
+      {/* Pie legal */}
+      <Reveal delay={0.18}>
+        <div className="py-5 text-center text-xs text-white/40">
+          © {new Date().getFullYear()} Gedeon Security. Todos los derechos reservados.
+        </div>
+      </Reveal>
     </footer>
   );
 }
