@@ -1,12 +1,13 @@
 // src/components/navbar.jsx
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LINKS = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Ubicación", href: "#ubicacion" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", id: "inicio", href: "#inicio" },
+  { label: "Nosotros", id: "nosotros", href: "#nosotros" },
+  { label: "Servicios", id: "servicios", href: "#servicios" },
+  { label: "Ubicación", id: "ubicacion", href: "#ubicacion" },
+  { label: "Contacto", id: "contacto", href: "#contacto" },
 ];
 
 const LOGO_AMARILLO = "images/logo-gedeon-amarillo.png";
@@ -18,6 +19,9 @@ const BG_AZUL = "bg-[#0b1a2b]";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -42,6 +46,31 @@ export default function Navbar() {
   const border = scrolled ? "border-white/15" : "border-black/15";
   const hoverBg = scrolled ? "hover:bg-white/10" : "hover:bg-black/10";
 
+  const scrollToId = useCallback((id) => {
+    requestAnimationFrame(() => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, []);
+
+  const goToSection = useCallback(
+    (id) => {
+      setOpen(false);
+
+      // Si estás en otra ruta (ej /galeria), vuelve a "/" y luego scrollea
+      if (location.pathname !== "/") {
+        navigate("/", { replace: false });
+        // Espera un tick para que el Home renderice los ids
+        setTimeout(() => scrollToId(id), 0);
+        return;
+      }
+
+      scrollToId(id);
+    },
+    [location.pathname, navigate, scrollToId]
+  );
+
   return (
     <header className="fixed top-4 left-0 right-0 z-50">
       {/* Pill nav tipo PrebuiltUI */}
@@ -49,11 +78,9 @@ export default function Navbar() {
         className={[
           "mx-4",
           "max-md:w-[calc(100%-2rem)]",
-          // 👇 más ancho en desktop sin afectar mobile
           "max-w-[1400px]",
           "md:mx-auto",
           "flex items-center justify-between",
-          // 👇 más aire horizontal en desktop
           "px-6 md:px-12 py-3",
           "rounded-full",
           "border",
@@ -67,7 +94,10 @@ export default function Navbar() {
         {/* LOGO */}
         <a
           href="#inicio"
-          onClick={() => setOpen(false)}
+          onClick={(e) => {
+            e.preventDefault();
+            goToSection("inicio");
+          }}
           className="flex items-center gap-3 select-none"
           aria-label="Gedeon Security - Inicio"
         >
@@ -79,13 +109,13 @@ export default function Navbar() {
           />
         </a>
 
-        {/* LINKS DESKTOP (un poquito más a la izquierda) */}
+        {/* LINKS DESKTOP */}
         <div className="hidden md:flex items-center gap-8 ml-auto mr-6">
-
           {LINKS.map((l) => (
             <NavLink
-              key={l.href}
+              key={l.id}
               href={l.href}
+              onClick={() => goToSection(l.id)}
               className={textMuted}
               hoverClass={text}
             >
@@ -94,11 +124,14 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* ACCIONES DESKTOP (al extremo derecho) */}
+        {/* ACCIONES DESKTOP */}
         <div className="hidden md:flex items-center gap-3">
-
           <a
             href="#contacto"
+            onClick={(e) => {
+              e.preventDefault();
+              goToSection("contacto");
+            }}
             className={[
               "rounded-full px-4 py-2 text-sm font-medium border",
               border,
@@ -112,6 +145,10 @@ export default function Navbar() {
 
           <a
             href="#contacto"
+            onClick={(e) => {
+              e.preventDefault();
+              goToSection("contacto");
+            }}
             className={[
               "rounded-full px-4 py-2 text-sm font-semibold transition",
               scrolled
@@ -137,15 +174,9 @@ export default function Navbar() {
           aria-expanded={open}
         >
           <div className="space-y-1.5">
-            <span
-              className={`block w-5 h-0.5 ${scrolled ? "bg-white" : "bg-black"}`}
-            />
-            <span
-              className={`block w-5 h-0.5 ${scrolled ? "bg-white" : "bg-black"}`}
-            />
-            <span
-              className={`block w-5 h-0.5 ${scrolled ? "bg-white" : "bg-black"}`}
-            />
+            <span className={`block w-5 h-0.5 ${scrolled ? "bg-white" : "bg-black"}`} />
+            <span className={`block w-5 h-0.5 ${scrolled ? "bg-white" : "bg-black"}`} />
+            <span className={`block w-5 h-0.5 ${scrolled ? "bg-white" : "bg-black"}`} />
           </div>
         </button>
       </nav>
@@ -167,9 +198,12 @@ export default function Navbar() {
             <div className="flex flex-col items-stretch p-4 gap-2">
               {LINKS.map((l) => (
                 <a
-                  key={l.href}
+                  key={l.id}
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    goToSection(l.id);
+                  }}
                   className={[
                     "rounded-xl px-4 py-3 text-base font-medium transition",
                     textMuted,
@@ -183,7 +217,10 @@ export default function Navbar() {
               <div className="mt-2 grid grid-cols-2 gap-2">
                 <a
                   href="#contacto"
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    goToSection("contacto");
+                  }}
                   className={[
                     "rounded-xl px-4 py-3 text-sm font-semibold text-center transition border",
                     border,
@@ -196,7 +233,10 @@ export default function Navbar() {
 
                 <a
                   href="#contacto"
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    goToSection("contacto");
+                  }}
                   className={[
                     "rounded-xl px-4 py-3 text-sm font-semibold text-center transition",
                     scrolled ? "bg-white text-black" : "bg-[#0b1a2b] text-white",
@@ -215,10 +255,18 @@ export default function Navbar() {
 
 /**
  * Link estilo PrebuiltUI: dos spans y animación vertical al hover.
+ * Ahora intercepta click para hacer scroll suave (sin romper router).
  */
-function NavLink({ href, children, className = "", hoverClass = "" }) {
+function NavLink({ href, children, className = "", hoverClass = "", onClick }) {
   return (
-    <a href={href} className="relative overflow-hidden h-6 group">
+    <a
+      href={href}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick?.();
+      }}
+      className="relative overflow-hidden h-6 group"
+    >
       <span
         className={[
           "block transition-transform duration-300",
