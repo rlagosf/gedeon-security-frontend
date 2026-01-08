@@ -1,14 +1,14 @@
 // src/App.jsx
-import { HashRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
-import AppRoutes from "./routes/appRoutes";
+import AppRoutes from "./routes/AppRoutes"; // ojo mayúsculas si tu archivo es AppRoutes.jsx
 
 export default function App() {
   return (
     <ThemeProvider>
-      <Router>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <AppRoutes />
-      </Router>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
