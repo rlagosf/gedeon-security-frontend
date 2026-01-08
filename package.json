@@ -6,10 +6,16 @@
   "homepage": "https://rlagosf.github.io/gedeon-security-frontend",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --mode production",
+
+    "build": "vite build",
+
+    "build:prod": "VITE_BASE=/ vite build --mode production",
+    "build:gh": "VITE_BASE=/gedeon-security-frontend/ vite build --mode ghpages",
+
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "vite build --mode ghpages",
+
+    "predeploy": "npm run build:gh",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
