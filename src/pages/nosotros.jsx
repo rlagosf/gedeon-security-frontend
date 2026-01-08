@@ -33,7 +33,7 @@ export default function Nosotros() {
               <div className="relative">
                 <div className="absolute -inset-3 rounded-3xl bg-white/5 blur-xl" />
                 <img
-                  src="/images/cibersecurity.png"
+                  src="images/cibersecurity.png"
                   alt="Ciberseguridad y control"
                   className="relative w-full max-w-sm rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur"
                   loading="eager"

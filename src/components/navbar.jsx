@@ -9,8 +9,8 @@ const LINKS = [
   { label: "Contacto", href: "#contacto" },
 ];
 
-const LOGO_AMARILLO = "/images/logo-gedeon-amarillo.png";
-const LOGO_AZUL = "/images/logo-gedeon-azul.png";
+const LOGO_AMARILLO = "images/logo-gedeon-amarillo.png";
+const LOGO_AZUL = "images/logo-gedeon-azul.png";
 
 const BG_AMARILLO = "bg-[#FCEE21]";
 const BG_AZUL = "bg-[#0b1a2b]";

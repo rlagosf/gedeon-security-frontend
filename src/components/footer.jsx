@@ -13,7 +13,7 @@ export default function Footer() {
           <div>
             <div className="flex items-start gap-4">
               <img
-                src="/images/logo-gedeon-amarillo.png"
+                src="images/logo-gedeon-amarillo.png"
                 alt="Gedeon Security"
                 className="h-16 w-auto object-contain"
                 draggable="false"

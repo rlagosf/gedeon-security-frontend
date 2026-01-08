@@ -17,7 +17,7 @@ export default function Landing() {
       <div className="absolute inset-0 z-0" style={MASK_STYLE}>
         {/* Foto */}
         <img
-          src="/images/foto-camara-ia.jpg"
+          src="images/foto-camara-ia.jpg"
           alt="Gedeon Security fondo"
           className="absolute inset-0 w-full h-full object-cover"
         />

@@ -8,28 +8,28 @@ const SERVICES = [
     desc:
       "Para entregar una seguridad integral contamos con vigilancia in situ, procedimientos adecuados según las necesidades de cada instalación y clientes. Profesionales de élite, diseño operativo y herramientas de gestión y control de última generación.",
     icon: ShieldCheck,
-    img: "/images/seguridad-fisica.jpg",
+    img: "images/seguridad-fisica.jpg",
   },
   {
     title: "Seguridad Electrónica e Integración",
     desc:
       "Soluciones de CCTV (circuito cerrado de televisión), control de acceso y videovigilancia. Sistemas completos para protección perimetral (cercos eléctricos, rayos lineales, etc.) de última generación.",
     icon: Cctv,
-    img: "/images/seguridad-electronica.jpg",
+    img: "images/seguridad-electronica.jpg",
   },
   {
     title: "Servicio de Investigación Empresarial",
     desc:
       "Control de bajas y absentismo laboral; control de rutas; selección de personal y duplicidad de empleos; robos, hurtos, fraudes y fuga de información; control de personal interno; investigación de accidentes e informes fraudulentos; control de proveedores y revisión de procesos en la cadena logística.",
     icon: Search,
-    img: "/images/foto-guardia-corp.jpg",
+    img: "images/foto-guardia-corp.jpg",
   },
   {
     title: "Guardias de Seguridad",
     desc:
       "Guardias altamente calificados para mayor control sobre el ingreso de personas a su empresa. Nuestro equipo de operaciones diseña disposiciones y protocolos para garantizar la seguridad de la instalación.",
     icon: UserCheck,
-    img: "/images/foto-guardia.jpg",
+    img: "images/foto-guardia.jpg",
   },
 ];
 
