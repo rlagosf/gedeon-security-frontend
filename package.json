@@ -7,15 +7,12 @@
   "scripts": {
     "dev": "vite",
 
-    "build": "vite build",
-
-    "build:prod": "VITE_BASE=/ vite build --mode production",
-    "build:gh": "VITE_BASE=/gedeon-security-frontend/ vite build --mode ghpages",
+    "build": "vite build --mode production",
 
     "lint": "eslint .",
     "preview": "vite preview",
 
-    "predeploy": "npm run build:gh",
+    "predeploy": "vite build --mode ghpages",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
