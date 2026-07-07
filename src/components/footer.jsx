@@ -7,6 +7,9 @@ export default function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const MAPS_LINK =
+    "https://www.google.com/maps/place/Dr.+S%C3%B3tero+del+R%C3%ADo+508,+8340297+Santiago,+Regi%C3%B3n+Metropolitana/@-33.4376354,-70.6573288,17z/data=!3m1!4b1!4m6!3m5!1s0x9662c5a51b63b6b3:0xf20434902593373f!8m2!3d-33.4376354!4d-70.6547539!16s%2Fg%2F11dzq5hrgp?entry=ttu";
+
   const scrollToId = useCallback((id) => {
     requestAnimationFrame(() => {
       const el = document.getElementById(id);
@@ -23,6 +26,7 @@ export default function Footer() {
         setTimeout(() => scrollToId(id), 0);
         return;
       }
+
       scrollToId(id);
     },
     [location.pathname, navigate, scrollToId]
@@ -35,7 +39,7 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-[#070b12] overflow-hidden">
-      {/* Fade superior (para empalmar con el componente anterior) */}
+      {/* Fade superior */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-transparent to-[#070b12]" />
 
       <div className="max-w-7xl mx-auto px-6 py-14 grid gap-12 md:grid-cols-3 items-start">
@@ -58,8 +62,9 @@ export default function Footer() {
               </a>
 
               <p className="text-white/65 text-sm leading-relaxed max-w-sm mt-1">
-                Empresa de seguridad orientada a la prevención, control operativo y
-                respuesta coordinada. Servicios profesionales para entornos exigentes.
+                Empresa de seguridad orientada a la prevención, control operativo
+                y respuesta coordinada. Servicios profesionales para entornos
+                exigentes.
               </p>
             </div>
           </div>
@@ -82,6 +87,7 @@ export default function Footer() {
                   Inicio
                 </a>
               </li>
+
               <li>
                 <a
                   href="#nosotros"
@@ -91,6 +97,7 @@ export default function Footer() {
                   Nosotros
                 </a>
               </li>
+
               <li>
                 <a
                   href="#servicios"
@@ -100,6 +107,7 @@ export default function Footer() {
                   Servicios
                 </a>
               </li>
+
               <li>
                 <a
                   href="#ubicacion"
@@ -109,6 +117,7 @@ export default function Footer() {
                   Ubicación
                 </a>
               </li>
+
               <li>
                 <a
                   href="#contacto"
@@ -118,6 +127,7 @@ export default function Footer() {
                   Contacto
                 </a>
               </li>
+
               <li>
                 <a
                   href="#sponsors"
@@ -142,24 +152,25 @@ export default function Footer() {
               <p>
                 📍{" "}
                 <a
-                  href="https://www.google.com/maps/dir//Lord+Cochrane+30+8330166+Santiago+Regi%C3%B3n+Metropolitana/@-33.4455629,-70.6550952,17z"
+                  href={MAPS_LINK}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="hover:text-white transition"
+                  aria-label="Abrir ubicación de Gedeon Security en Google Maps"
                 >
-                  Lord Cochrane N° 30, Oficina 606, Santiago Centro, Chile
+                  Dr. Sótero del Río 508, Oficina 1024, Santiago Centro, Chile
                 </a>
               </p>
 
               <p>
                 📞{" "}
                 <a
-                  href="https://wa.me/56941375587"
+                  href="https://wa.me/56981302694"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="hover:text-white transition"
                 >
-                  +56 9 4137 5587
+                  +56 9 8130 2694
                 </a>
               </p>
 
@@ -180,7 +191,8 @@ export default function Footer() {
       {/* Pie legal */}
       <Reveal delay={0.18}>
         <div className="py-5 text-center text-xs text-white/40">
-          © {new Date().getFullYear()} Gedeon Security. Todos los derechos reservados.
+          © {new Date().getFullYear()} Gedeon Security. Todos los derechos
+          reservados.
         </div>
       </Reveal>
     </footer>

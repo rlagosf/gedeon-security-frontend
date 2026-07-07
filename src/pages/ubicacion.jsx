@@ -35,7 +35,7 @@ export default function Ubicacion() {
                 </div>
 
                 <p className="mt-3 text-white/85 leading-relaxed">
-                  Lord Cochrane N° 30, Oficina 606<br />
+                  Dr. Sótero del Río 508, Oficina 1024<br />
                   Santiago Centro, Región Metropolitana, Chile.
                 </p>
               </div>
@@ -45,7 +45,9 @@ export default function Ubicacion() {
                   <div className="h-10 w-10 rounded-xl border border-white/15 bg-white/10 grid place-items-center backdrop-blur">
                     <Clock className="h-5 w-5 text-[#FCEE21]" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white">Horario de atención</h3>
+                  <h3 className="text-lg font-semibold text-white">
+                    Horario de atención
+                  </h3>
                 </div>
 
                 <p className="mt-3 text-white/85">
@@ -63,7 +65,7 @@ export default function Ubicacion() {
 
               <iframe
                 title="Ubicación Gedeon Security"
-                src="https://www.google.com/maps?q=Lord%20Cochrane%2030%2C%20Santiago%20Centro%2C%20Chile&output=embed"
+                src="https://www.google.com/maps?q=Dr.%20S%C3%B3tero%20del%20R%C3%ADo%20508%2C%20Santiago%20Centro%2C%20Chile&output=embed"
                 className="absolute inset-0 w-full h-full grayscale-[20%] contrast-[1.05]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
